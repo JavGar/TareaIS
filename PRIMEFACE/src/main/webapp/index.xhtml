@@ -12,7 +12,38 @@ and open the template in the editor.
     <h:head>
     </h:head>
     <h:body>
-        <div>Página de presentación</div>
-        <div>Hola2</div>
+        <div>
+            <h1>Registro</h1>
+            <h:form>
+                <h:panelGrid columns="2" id="usuario" cellpadding="5"> 
+                    <h:outputLabel for="user" value="Usuario: "/>
+                    <p:inputText placeholder="USUARIO" />
+                </h:panelGrid>
+                
+                <p:messages id="messages" showDetail="true" autoUpdate="true" />
+                <h:panelGrid columns="2" id="contras" cellpadding="5">
+                    <h:outputLabel for="pwd1" value="Contraseña: " />
+                    <p:password id="pwd1" value="#{passwordView.password}" match="pwd2" label="Password 1" required="true" feedback="true"/>
+ 
+                    <h:outputLabel for="pwd2" value="Confirmar Contraseña: " />
+                    <p:password id="pwd2" value="#{passwordView.password}" label="Password 2" required="true" />
+                </h:panelGrid>
+                
+                <h:panelGrid columns="2" id="datos" cellpadding="5">
+                    <h:outputLabel for="phone" value="Teléfono: " />
+                    <p:inputMask id="phone" value="#{maskView.phone}" mask="(999) 999-9999"/>
+                    
+                    <h:outputLabel for="button" value="Fecha de Nacimiento: " />
+                    <p:calendar id="button" value="#{calendarView.date}" placeholder="__/__/__" showOn="button" />
+                    
+                    <h:outputText value="Calificación de formulario: " />
+                    <p:rating value="#{ratingView.rating1}" />
+                </h:panelGrid>
+                <br></br>
+                <h:outputLabel for="desc" value="Acerca de ti:" />
+                <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" />
+                <p:commandButton update="@form" value="Save" />
+            </h:form>
+        </div>
     </h:body>
 </html>
